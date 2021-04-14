@@ -47,6 +47,48 @@ type Assignment struct {
 	EntityTitle         string `json:"entityTitle"`
 }
 
+func (p *Handler) GetSiteAssignment(siteID string) (assignments []Assignment, err error) {
+	p.sustainAuth()
+
+	res, err := p.client.Get(BaseURI + "/direct/assignment/site/" + siteID + ".json")
+	if err != nil {
+		return
+	}
+	defer res.Body.Close()
+
+	var data Data
+
+	err = json.NewDecoder(res.Body).Decode(&data)
+	if err != nil {
+		return
+	}
+
+	assignments = data.AssignmentCollection
+
+	return
+}
+
+func (p *Handler) GetAssignmentDetail(assignmentID string) (assignment Assignment, err error) {
+	p.sustainAuth()
+
+	res, err := p.client.Get(BaseURI + "/direct/assignment/item/" + assignmentID + ".json")
+	if err != nil {
+		return
+	}
+	defer res.Body.Close()
+
+	var data Assignment
+
+	err = json.NewDecoder(res.Body).Decode(&data)
+	if err != nil {
+		return
+	}
+
+	assignment = data
+
+	return
+}
+
 func (p *Handler) GetAssignment() (assignments []Assignment, err error) {
 	p.sustainAuth()
 
