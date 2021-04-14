@@ -25,8 +25,27 @@ type Content struct {
 	EntityTitle     string `json:"entityTitle"`
 }
 
-func (p *Handler) ContentGet(siteID string) (content []Content) {
-	res, err := p.client.Get(BaseURI + "/direct/content/site/" + siteID + ".json")
+func (p *Handler) GetOwnInfo() (content []Content) {
+	res, err := p.get(BaseURI+"/direct/content/my.json", nil)
+	if err != nil {
+		return
+	}
+	defer res.Body.Close()
+
+	var data Data
+
+	err = json.NewDecoder(res.Body).Decode(&data)
+	if err != nil {
+		return
+	}
+
+	content = data.ContentCollection
+
+	return
+}
+
+func (p *Handler) GetContent(siteID string) (content []Content) {
+	res, err := p.get(BaseURI+"/direct/content/site/"+siteID+".json", nil)
 	if err != nil {
 		return
 	}

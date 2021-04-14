@@ -47,7 +47,7 @@ type Assignment struct {
 	EntityTitle         string `json:"entityTitle"`
 }
 
-func (p *Handler) AssignmentGet() (assignments []Assignment, err error) {
+func (p *Handler) GetAssignment() (assignments []Assignment, err error) {
 	res, err := p.client.Get(BaseURI + "/direct/assignment/my.json")
 	if err != nil {
 		return
