@@ -63,8 +63,6 @@ func (p *Handler) Login(id, pass string) error {
 		return err
 	}
 
-	b = new(bytes.Buffer)
-	io.Copy(b, res.Body)
 	res.Body.Close()
 
 	p.authOK = true
