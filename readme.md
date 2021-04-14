@@ -23,7 +23,7 @@ import "github.com/TKMAX777/panda"
 
 func main() {
     Panda := panda.NewClient()
-    err = Panda.Login(ECS_ID, PASSWORD)
+    err := Panda.Login(ECS_ID, PASSWORD)
     if err != nil {
         panic(err)
     }
