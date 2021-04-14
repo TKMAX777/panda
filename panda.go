@@ -12,6 +12,10 @@ const UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 
 type Handler struct {
 	client *http.Client
 	jar    *cookiejar.Jar
+	auth   struct {
+		ID   string
+		Pass string
+	}
 	authOK bool
 }
 
@@ -31,7 +35,11 @@ type Data struct {
 func NewClient() *Handler {
 	jar, _ := cookiejar.New(nil)
 
-	var p = &Handler{&http.Client{Jar: jar}, jar, false}
+	var p = &Handler{
+		client: &http.Client{Jar: jar},
+		jar:    jar,
+		authOK: false,
+	}
 
 	return p
 }

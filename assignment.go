@@ -48,6 +48,8 @@ type Assignment struct {
 }
 
 func (p *Handler) GetAssignment() (assignments []Assignment, err error) {
+	p.sustainAuth()
+
 	res, err := p.client.Get(BaseURI + "/direct/assignment/my.json")
 	if err != nil {
 		return

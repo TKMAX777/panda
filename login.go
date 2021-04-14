@@ -65,6 +65,9 @@ func (p *Handler) Login(id, pass string) error {
 
 	res.Body.Close()
 
+	p.auth.ID = id
+	p.auth.Pass = pass
+
 	p.authOK = true
 
 	return nil

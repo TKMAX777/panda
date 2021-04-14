@@ -25,7 +25,7 @@ type Content struct {
 	EntityTitle     string `json:"entityTitle"`
 }
 
-func (p *Handler) GetOwnInfo() (content []Content) {
+func (p *Handler) GetOwnInfo() (content Content) {
 	res, err := p.get(BaseURI+"/direct/content/my.json", nil)
 	if err != nil {
 		return
@@ -39,12 +39,18 @@ func (p *Handler) GetOwnInfo() (content []Content) {
 		return
 	}
 
-	content = data.ContentCollection
+	if len(data.ContentCollection) < 1 {
+		return
+	}
+
+	content = data.ContentCollection[0]
 
 	return
 }
 
 func (p *Handler) GetContent(siteID string) (content []Content) {
+	p.sustainAuth()
+
 	res, err := p.get(BaseURI+"/direct/content/site/"+siteID+".json", nil)
 	if err != nil {
 		return
