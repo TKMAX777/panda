@@ -25,7 +25,7 @@ type Content struct {
 	EntityTitle     string `json:"entityTitle"`
 }
 
-func (p *Handler) GetOwnInfo() (content Content) {
+func (p *Handler) GetMyInfo() (content Content) {
 	res, err := p.get(BaseURI+"/direct/content/my.json", nil)
 	if err != nil {
 		return
