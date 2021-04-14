@@ -25,7 +25,7 @@ func (p Handler) get(uri string, query url.Values) (*http.Response, error) {
 		req.URL.RawQuery = query.Encode()
 	}
 
-	req.Header.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36")
+	req.Header.Add("User-Agent", UserAgent)
 
 	return p.client.Do(req)
 }
