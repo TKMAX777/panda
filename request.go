@@ -13,7 +13,7 @@ func (p Handler) post(uri string, query, values url.Values) (*http.Response, err
 		req.URL.RawQuery = query.Encode()
 	}
 
-	req.Header.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36")
+	req.Header.Add("User-Agent", UserAgent)
 	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 
 	return p.client.Do(req)
