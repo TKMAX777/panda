@@ -19,9 +19,9 @@ type Handler struct {
 	authOK bool
 }
 
-type Time struct {
-	EpochSecond int `json:"epochSecond"`
-	Nano        int `json:"nano"`
+type unixTime struct {
+	EpochSecond int64 `json:"epochSecond"`
+	Nano        int64 `json:"nano"`
 }
 
 type Data struct {
