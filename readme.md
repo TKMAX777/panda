@@ -1,7 +1,7 @@
 # PandA API for Golang
 
 ## 概要
-PandAのGo言語向けAPI。今のところAssignmentsとContentしか実装してない。自分用。
+PandAのGo言語向けAPI。今のところAssignmentsとContentしか実装してない。
 
 ## 目次
 <!-- TOC -->
