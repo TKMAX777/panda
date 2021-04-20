@@ -13,7 +13,7 @@ func (p Handler) post(uri string, query, values url.Values) (*http.Response, err
 		req.URL.RawQuery = query.Encode()
 	}
 
-	req.Header.Add("User-Agent", UserAgent)
+	req.Header.Add("User-Agent", userAgent)
 	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 
 	return p.client.Do(req)
@@ -25,7 +25,7 @@ func (p Handler) get(uri string, query url.Values) (*http.Response, error) {
 		req.URL.RawQuery = query.Encode()
 	}
 
-	req.Header.Add("User-Agent", UserAgent)
+	req.Header.Add("User-Agent", userAgent)
 
 	return p.client.Do(req)
 }
