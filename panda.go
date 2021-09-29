@@ -5,7 +5,6 @@ import (
 	"net/http/cookiejar"
 )
 
-const authBaseURI = "https://cas.ecs.kyoto-u.ac.jp"
 const BaseURI = "https://panda.ecs.kyoto-u.ac.jp"
 const userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
 

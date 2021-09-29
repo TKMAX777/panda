@@ -10,7 +10,7 @@ import (
 
 // Login logins panda with put ID / PASSWORD
 func (p *Handler) Login(id, pass string) error {
-	var uri = authBaseURI + "/cas/login"
+	var uri = BaseURI + "/cas/login"
 	var loginQue = url.Values{}
 	loginQue.Add("service", BaseURI+"/sakai-login-tool/container")
 
@@ -27,7 +27,7 @@ func (p *Handler) Login(id, pass string) error {
 
 	{
 		var cookies = p.jar.Cookies(&url.URL{
-			Host:   "cas.ecs.kyoto-u.ac.jp",
+			Host:   "panda.ecs.kyoto-u.ac.jp",
 			Path:   "/cas",
 			Scheme: "https",
 		})
